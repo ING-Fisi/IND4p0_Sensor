@@ -30,6 +30,7 @@
 #pragma pack(1)
 typedef enum uart_command
 {
+	//get_fw_version_cmd,
     bump_event_cmd,
     shake_event_cmd,
 	shake_monitor_cmd,
@@ -39,11 +40,13 @@ typedef enum uart_command
     setConfiguration_cmd,
     saveConfiguration_cmd,
     getConfiguration_cmd,
-	getRawData_cmd
+	getRawData_cmd,
+	hidden_bump_event_cmd
     //alarm_disabled_cmd
 
 }uart_command;
 #pragma pack()
+
 
 
 
@@ -56,17 +59,58 @@ typedef enum sensor_configuration_bytes
 }sensor_configuration_bytes;
 
 
+//#pragma pack(1)
+//typedef struct protocollo_uart
+//{
+//    uint8_t stx;
+//    uint8_t cmd;
+//    uint16_t payload[10];
+//    uint16_t crc;
+//    uint8_t etx;
+//
+//}protocollo_uart;
+//#pragma pack()
+
+//***********************************************************//
+#pragma pack(1)
+typedef struct payload
+{
+    uint16_t bumpsThreshold;
+    uint16_t shakesThreshold;
+    uint16_t shakesSamplingTime; // espresso in secondi
+    uint16_t shakesCount;
+
+    uint8_t xShakesCount;
+    uint8_t yShakesCount;
+    uint8_t zShakesCount;
+
+    float32_t output_X;
+    float32_t output_Y;
+    float32_t output_Z;
+
+    uint16_t hiddenBumpsThreshold;
+
+    //char fw_version[5];
+
+}payload;
+#pragma pack()
+
 #pragma pack(1)
 typedef struct protocollo_uart
 {
     uint8_t stx;
     uint8_t cmd;
-    uint16_t payload[10];
+
+    payload pay;
+
     uint16_t crc;
     uint8_t etx;
 
 }protocollo_uart;
 #pragma pack()
+
+
+//*****************************************************************//
 
 
 #pragma pack(1)

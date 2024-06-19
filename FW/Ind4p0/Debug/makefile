@@ -60,8 +60,8 @@ all: main-build
 main-build: Ind4p0.elf secondary-outputs
 
 # Tool invocations
-Ind4p0.elf Ind4p0.map: $(OBJS) $(USER_OBJS) H:\Il\ mio\ Drive\PROGETTI\FISITRON\Ind4.0\WS\Ind4p0\STM32F411CEUX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "Ind4p0.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"H:\Il mio Drive\PROGETTI\FISITRON\Ind4.0\WS\Ind4p0\STM32F411CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Ind4p0.map" -Wl,--gc-sections -static -L"H:\Il mio Drive\PROGETTI\FISITRON\Ind4.0\WS\Ind4p0\Drivers\CMSIS\Lib\GCC" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Ind4p0.elf Ind4p0.map: $(OBJS) $(USER_OBJS) C:\Users\Utente\Desktop\IND4p0\IND4p0\FW\Ind4p0\STM32F411CEUX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "Ind4p0.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\Utente\Desktop\IND4p0\IND4p0\FW\Ind4p0\STM32F411CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Ind4p0.map" -Wl,--gc-sections -static -L"C:\Users\Utente\Desktop\IND4p0\IND4p0\FW\Ind4p0\Drivers\CMSIS\Lib\GCC" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
